@@ -6,7 +6,6 @@ Students are told whether their answer was correct or not.
 
 import app_functions
 
-
 def main():
     """
     Use the functions defined in app_functions.py to make this game work.
@@ -23,7 +22,20 @@ def main():
     print("Welcome to the Math App!!!")
     print("")  # line break
     ### write code to complete this function BELOW here ###
-
+    dice_1=app_functions.roll_die()
+    dice_2=app_functions.roll_die()
+    question_type=app_functions.get_question_type()
+    app_functions.print_question(dice_1, dice_2, question_type)
+    given_answer=app_functions.input_answer()
+    if given_answer == -1:
+        app_functions.print_error_message()
+        return 
+    is_correct=app_functions.is_correct_answer(dice_1, dice_2, question_type, given_answer)
+    if is_correct==True:
+        app_functions.print_congratulations(question_type)
+    else:
+        app_functions.print_correct_answer(dice_1, dice_2, question_type)
+    
     ### write code to complete this function ABOVE here ###
     print("")  # line break
     print("Game over!!!")
